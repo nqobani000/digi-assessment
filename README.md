@@ -19,21 +19,25 @@ This REST application is built using Spring 3 and requires Java 17 to be install
 1. **Clone the Repository**  
    Clone the repository to your local machine.
 
-2. **Open in Your IDE**  
-   Open the cloned repository in IntelliJ IDEA or your preferred IDE.
+2. **Navigate to Project Root Dir.**  
+   On your terminal, navigate to the root directory of your project.
 
-3. **Sync Maven Dependencies**  
-   Ensure that all Maven dependencies are synced. Your IDE should handle this automatically, but you can also manually trigger it by right-clicking the pom.xml file and selecting "Reload" or "Reimport."
+3. **Build the Project**
+   First, ensure that the project has been compiled and the JAR file has been generated in the `target` directory.
 
-4. **Run the Application**
-    - **Via Terminal**: Navigate to the root directory of the application in your terminal and execute the following command:
+   Run the command
+   `mvn install`
 
-bash
-mvn spring-boot:run
+   If you do not have mvn in your environment, then execute the following command to install it on your MacOS.
+   `brew install maven`
 
-- **Via IDE**: Alternatively, you can run the application by clicking the "Play" button in your IDE.
+   Then run the following command to build the docker image:
+   `docker build -t agencybooking .`
 
-The application will start on port 8080 by default.
+4.  **Run the Project**
+    To run the application, execute:
+    `docker run -p 8080:8080 agencybooking      `
+
 
 ## Main Endpoints
 
@@ -50,24 +54,24 @@ status code 200 for successful deletion.
 ##### 200 Response
 ```json
 	"response": [
-		{
-			"guest": {
-				"firstName": "Nqobani",
-				"lastName": "Nhlengethwa",
-				"email": "nqobani2730@gmail.com",
-				"phone": "+27623791885"
-			},
-			"hotel": {
-				"name": "The Grand Hotel",
-				"address": "123 Main St, Springfield",
-				"phone": "+27611111111",
-				"email": "info@grandhotel.com"
-			},
-			"checkIn": "2024-08-25T14:30:00",
-			"checkOut": "2024-08-25T19:30:00"
-		}
-	],
-	"error": null
+{
+"guest": {
+"firstName": "Nqobani",
+"lastName": "Nhlengethwa",
+"email": "nqobani2730@gmail.com",
+"phone": "+27623791885"
+},
+"hotel": {
+"name": "The Grand Hotel",
+"address": "123 Main St, Springfield",
+"phone": "+27611111111",
+"email": "info@grandhotel.com"
+},
+"checkIn": "2024-08-25T14:30:00",
+"checkOut": "2024-08-25T19:30:00"
+}
+],
+"error": null
 ```
 
 **URL**: POST `http://localhost:8080/reservation/add`
@@ -75,33 +79,33 @@ status code 200 for successful deletion.
 **Request Data**
 ```json
 {
-	"hotel_id" : "1",
-	"guest_email" : "nqobani2730gmail.com",
-	"check_in_date_time" : "2024-08-25T14:30:00",
-	"check_out_date_time" : "2024-08-25T19:30:00"
+   "hotel_id" : "1",
+   "guest_email" : "nqobani2730gmail.com",
+   "check_in_date_time" : "2024-08-25T14:30:00",
+   "check_out_date_time" : "2024-08-25T19:30:00"
 }
 ```
 
 ##### 200 Response
 ```json
 {
-	"response": {
-		"guest": {
-			"firstName": "Nqobani",
-			"lastName": "Nhlengethwa",
-			"email": "nqobani2730@gmail.com",
-			"phone": "+27623791885"
-		},
-		"hotel": {
-			"name": "The Grand Hotel",
-			"address": "123 Main St, Springfield",
-			"phone": "+27611111111",
-			"email": "info@grandhotel.com"
-		},
-		"checkIn": "2024-08-25T14:30:00",
-		"checkOut": "2024-08-25T19:30:00"
-	},
-	"error": null
+   "response": {
+      "guest": {
+         "firstName": "Nqobani",
+         "lastName": "Nhlengethwa",
+         "email": "nqobani2730@gmail.com",
+         "phone": "+27623791885"
+      },
+      "hotel": {
+         "name": "The Grand Hotel",
+         "address": "123 Main St, Springfield",
+         "phone": "+27611111111",
+         "email": "info@grandhotel.com"
+      },
+      "checkIn": "2024-08-25T14:30:00",
+      "checkOut": "2024-08-25T19:30:00"
+   },
+   "error": null
 }
 ```
 
@@ -110,41 +114,41 @@ status code 200 for successful deletion.
 ##### 200 Response
 ```json
 {
-	"response": [
-		{
-			"guest": {
-				"firstName": "Nqobani",
-				"lastName": "Nhlengethwa",
-				"email": "nqobani2730@gmail.com",
-				"phone": "+27623791885"
-			},
-			"hotel": {
-				"name": "The Grand Hotel",
-				"address": "123 Main St, Springfield",
-				"phone": "+27611111111",
-				"email": "info@grandhotel.com"
-			},
-			"checkIn": "2024-08-25T14:30:00",
-			"checkOut": "2024-08-25T19:30:00"
-		},
-		{
-			"guest": {
-				"firstName": "Nqobani",
-				"lastName": "Nhlengethwa",
-				"email": "nqobani2730@gmail.com",
-				"phone": "+27623791885"
-			},
-			"hotel": {
-				"name": "The Grand Hotel",
-				"address": "123 Main St, Springfield",
-				"phone": "+27611111111",
-				"email": "info@grandhotel.com"
-			},
-			"checkIn": "2024-08-25T14:30:00",
-			"checkOut": "2024-08-25T19:30:00"
-		}
-	],
-	"error": null
+   "response": [
+      {
+         "guest": {
+            "firstName": "Nqobani",
+            "lastName": "Nhlengethwa",
+            "email": "nqobani2730@gmail.com",
+            "phone": "+27623791885"
+         },
+         "hotel": {
+            "name": "The Grand Hotel",
+            "address": "123 Main St, Springfield",
+            "phone": "+27611111111",
+            "email": "info@grandhotel.com"
+         },
+         "checkIn": "2024-08-25T14:30:00",
+         "checkOut": "2024-08-25T19:30:00"
+      },
+      {
+         "guest": {
+            "firstName": "Nqobani",
+            "lastName": "Nhlengethwa",
+            "email": "nqobani2730@gmail.com",
+            "phone": "+27623791885"
+         },
+         "hotel": {
+            "name": "The Grand Hotel",
+            "address": "123 Main St, Springfield",
+            "phone": "+27611111111",
+            "email": "info@grandhotel.com"
+         },
+         "checkIn": "2024-08-25T14:30:00",
+         "checkOut": "2024-08-25T19:30:00"
+      }
+   ],
+   "error": null
 }
 ```
 
