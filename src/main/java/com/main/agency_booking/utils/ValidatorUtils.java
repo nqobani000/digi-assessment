@@ -10,8 +10,6 @@ public class ValidatorUtils {
     
     public static final String SA_CELLPHONE_PATTERN = "^(0|\\+27)[6-8][0-9]{8}$";
     
-    
-    /*Hotel DTO validation messages*/
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class HotelDtoValidationMessages {
         
@@ -23,7 +21,6 @@ public class ValidatorUtils {
         public static final String CELL_NO_VALIDATION_MESSAGE = "Provide a valid S.A cell number for the Hotel.";
     }
     
-    /*Guest DTO validation messages*/
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class GuestDtoValidationMessages {
         
